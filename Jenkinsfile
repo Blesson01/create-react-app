@@ -15,7 +15,7 @@ agent any
 rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
     ssh root@107.21.176.248 'cd /root/reactjs-2 && /usr/bin/npm  install'
   
-  ssh root@107.21.176.248 'pwd'
+  ssh root@107.21.176.248 'cd /root/reactjs-2 && pwd'
   '''
   }
   }
