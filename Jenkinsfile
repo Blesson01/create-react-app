@@ -13,18 +13,20 @@ agent any
       steps {
     sh '''
 rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
-    ssh root@107.21.176.248 cd '/root/${JOB_NAME}'
-   /usr/bin/npm  install
-  
+    ssh root@107.21.176.248 'cd /root/${JOB_NAME}'
+  ssh root@107.21.176.248 '/usr/bin/npm  install'
+  ssh root@107.21.176.248 'curl ifconfig.me'
   '''
   }
   }
     stage ('Test') {
       steps {
   sh '''
+  
 ssh  root@107.21.176.248 'cd /root/${JOB_NAME}'
     
-  /usr/bin/npm run test
+  ssh root@107.21.176.248 '/usr/bin/npm run test'
+  ssh root@107.21.176.248 'curl ifconfig.me'
   '''
       }
     }
@@ -34,7 +36,8 @@ ssh  root@107.21.176.248 'cd /root/${JOB_NAME}'
         sh '''
        ssh root@107.21.176.248 'cd /root/${JOB_NAME}'
   
-        /usr/bin/npm run start
+         ssh root@107.21.176.248 '/usr/bin/npm run start'
+         ssh root@107.21.176.248 'curl ifconfig.me'
         '''
 }
     }
