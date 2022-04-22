@@ -35,7 +35,7 @@ When you’re ready to deploy to production, create a minified bundle with `npm 
 You **don’t** need to install or configure tools like webpack or Babel.<br>
 They are preconfigured and hidden so that you can focus on the code.
 
-Create a project, and you’re good to go.
+Create a project, and you’re good to go..
 
 ## Creating an App
 
