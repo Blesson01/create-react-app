@@ -12,7 +12,7 @@ agent any
   stage ('Npm install') {
       steps {
     sh '''
-echo ${JOB_NAME}
+echo {JOB_NAME}
 '''
 }
     }
