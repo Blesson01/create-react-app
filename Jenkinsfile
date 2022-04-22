@@ -13,7 +13,7 @@ agent any
       steps {
     sh '''
 rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
-    ssh root@107.21.176.248:/root/${JOB_NAME}
+    ssh root@107.21.176.248 cd '/root/${JOB_NAME}'
    /usr/bin/npm  install
   
   '''
@@ -22,8 +22,8 @@ rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
     stage ('Test') {
       steps {
   sh '''
-ssh  root@107.21.176.248:/root/
-    cd ${JOB_NAME}
+ssh  root@107.21.176.248 'cd /root/${JOB_NAME}'
+    
   /usr/bin/npm run test
   '''
       }
@@ -32,8 +32,8 @@ ssh  root@107.21.176.248:/root/
       steps {
         
         sh '''
-       ssh root@107.21.176.248:/root/
-    cd ${JOB_NAME}
+       ssh root@107.21.176.248 'cd /root/${JOB_NAME}'
+  
         /usr/bin/npm run start
         '''
 }
