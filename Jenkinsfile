@@ -3,7 +3,7 @@ agent any
   stages {
     stage ('Source code') {
       steps {
-     sh 'ssh root@107.21.176.248 ' /usr/bin/git branch: 'main', changelog: false, credentialsId: 'f7912342-df96-46fd-b906-32163eb897bf', poll: false, url: 'https://github.com/Blesson01/create-react-app.git'
+ git branch: 'main', changelog: false, credentialsId: 'f7912342-df96-46fd-b906-32163eb897bf', poll: false, url: 'https://github.com/Blesson01/create-react-app.git'
      
     
      }
@@ -13,7 +13,7 @@ agent any
       steps {
     sh '''
     
-    ssh root@107.21.176.24 && cd /root/create-react-app &&   /usr/bin/npm  install
+   npm  install
   
   '''
   }
@@ -21,7 +21,7 @@ agent any
     stage ('Test') {
       steps {
   sh '''
-  ssh root@107.21.176.24 && cd /root/create-react-app &&   /usr/bin/npm run test
+  npm run test
   '''
       }
     }
@@ -29,7 +29,7 @@ agent any
       steps {
         
         sh '''
-        ssh root@107.21.176.24 && cd /root/create-react-app &&   /usr/bin/npm run start
+        npm run build
         '''
 }
     }
