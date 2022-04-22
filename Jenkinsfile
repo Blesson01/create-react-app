@@ -12,8 +12,30 @@ agent any
   stage ('Npm install') {
       steps {
     sh '''
-echo {JOB_NAME}
-'''
+rsync -avzP workspace/${JOB_NAME} root@107.21.176.248:/root/
+    cd ${JOB_NAME}
+   npm  install
+  
+  '''
+  }
+  }
+    stage ('Test') {
+      steps {
+  sh '''
+  rsync -avzP workspace/${JOB_NAME} root@107.21.176.248:/root/
+    cd ${JOB_NAME}
+  npm run test
+  '''
+      }
+    }
+        stage ('Run') {
+      steps {
+        
+        sh '''
+        rsync -avzP workspace/${JOB_NAME} root@107.21.176.248:/root/
+    cd ${JOB_NAME}
+        npm run start
+        '''
 }
     }
     
