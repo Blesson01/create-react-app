@@ -12,10 +12,7 @@ agent any
   stage ('Npm install') {
       steps {
     sh '''
-rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
-    ssh root@107.21.176.248 'cd /root/reactjs-2 && /usr/bin/npm  install'
-  
-  ssh root@107.21.176.248 'cd /root/reactjs-2 && pwd'
+ npm  install
   '''
   }
   }
@@ -23,9 +20,8 @@ rsync -avzP ~/workspace/${JOB_NAME}/* root@107.21.176.248:/root/${JOB_NAME}/
       steps {
   sh '''
   
-ssh  root@107.21.176.248 'cd /root/reactjs-2 && /usr/bin/npm run test'
-     
-  ssh root@107.21.176.248 'pwd'
+npm run test    
+ 
   '''
       }
     }
@@ -33,10 +29,9 @@ ssh  root@107.21.176.248 'cd /root/reactjs-2 && /usr/bin/npm run test'
       steps {
         
         sh '''
-       ssh root@107.21.176.248 'cd /root/reactjs-2 && /usr/bin/npm run start'
+    
+    npm run start'
   
-        
-         ssh root@107.21.176.248 'pwd'
         '''
 }
     }
